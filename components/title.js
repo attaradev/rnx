@@ -9,9 +9,9 @@ const Title = ({ title, id }) => {
         </Link>
       </li>
       <style jsx>{`
-        .title:hover,
-        .title:focus,
-        .title:active {
+        li.title:hover,
+        li.title:focus,
+        li.title:active {
           text-decoration: underline;
           cursor: pointer;
         }
