@@ -4,12 +4,12 @@ import { usePost } from "../../hooks/use-post";
 const Post = () => {
   const router = useRouter();
   const { id } = router.query;
-  const { title, body } = usePost(id);
+  const post = usePost(id);
 
   return (
     <div>
-      <h2>{title}</h2>
-      <p>{body}</p>
+      <h2>{post.title}</h2>
+      <p>{post.body}</p>
     </div>
   );
 };
