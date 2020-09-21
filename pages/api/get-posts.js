@@ -1,10 +1,4 @@
-const faunadb = require("faunadb");
-const { formatPost } = require("../../utils/format-post");
-
-// your secret hash
-const secret = process.env.FAUNADB_SECRET_KEY;
-const q = faunadb.query;
-const client = new faunadb.Client({ secret });
+const { formatPost, client, q } = require("../../utils");
 
 module.exports = async (req, res) => {
   try {
