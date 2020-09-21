@@ -1,4 +1,4 @@
-const { formatPost, client, q } = require("../../utils");
+const { formatPost, client, q } = require("../../../utils");
 
 module.exports = async (req, res) => {
   try {

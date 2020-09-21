@@ -5,7 +5,7 @@ import Title from "../components/title";
 import { PostsContext } from "../contexts/posts-context";
 
 export default function Home() {
-  const posts = useContext(PostsContext);
+  const { posts } = useContext(PostsContext);
 
   return (
     <Layout>
