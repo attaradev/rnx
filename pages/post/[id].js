@@ -4,28 +4,13 @@ import { useRouter } from "next/router";
 import Layout from "../../components/layout";
 import { usePost } from "../../hooks/use-post";
 import { PostsContext } from "../../contexts/posts-context";
+import { handleUpdate } from "../../utils";
 
 const Post = () => {
   const router = useRouter();
   const { id } = router.query;
   const post = usePost(id);
   const { updatePost } = useContext(PostsContext);
-
-  const handleFavorite = async () => {
-    try {
-      const resp = await fetch(`/api/posts/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ favorite: !post?.favorite }),
-      });
-      const post = await resp.json();
-      updatePost(post);
-    } catch (error) {
-      console.warn(error.message);
-    }
-  };
 
   return (
     <Layout>
@@ -39,15 +24,26 @@ const Post = () => {
 
         <div className="grid">
           <div className="actions">
-            <div onClick={handleFavorite}>
+            <div
+              className="action"
+              onClick={handleUpdate(
+                { favorite: !post?.favorite },
+                id,
+                updatePost
+              )}
+            >
               <img
                 src={`/heart-${post?.favorite ? "filled" : "outline"}.svg`}
                 alt=""
                 className="icon"
               />
             </div>
-            <div>
+            <div
+              className="action"
+              onClick={handleUpdate({ likes: post?.likes + 1 }, id, updatePost)}
+            >
               <img src="/like.svg" alt="" className="icon" />
+              <p>{post?.likes}</p>
             </div>
           </div>
           <div className="card">

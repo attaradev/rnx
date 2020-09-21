@@ -4,7 +4,7 @@ const Title = ({ title, id }) => {
   return (
     <>
       <li className="title">
-        <Link href={`/post/${id}`}>
+        <Link href={`/post/${encodeURIComponent(id)}`}>
           <h2>{title}</h2>
         </Link>
       </li>
