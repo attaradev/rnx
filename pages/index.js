@@ -1,6 +1,20 @@
-import Head from 'next/head'
+import Head from "next/head";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function getPosts() {
+      const res = await fetch("/api/get-posts");
+      const posts = await res.json();
+      setPosts(posts);
+    }
+    getPosts();
+  }, []);
+
+  console.log(posts);
+
   return (
     <div className="container">
       <Head>
@@ -54,7 +68,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
@@ -205,5 +219,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
