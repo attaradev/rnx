@@ -21,6 +21,7 @@ const Post = () => {
           <div className="card">
             <p>{post?.body}</p>
           </div>
+          <div></div>
         </div>
       </main>
 
