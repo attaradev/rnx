@@ -49,6 +49,26 @@ const Post = () => {
           <div className="card">
             <p>{post?.body}</p>
           </div>
+          {/* New Upvote and Downvote Feature */}
+          <div className="action">
+            <img
+              src={`/up.svg`}
+              alt=""
+              className="icon"
+              onClick={handleUpdate({ votes: post?.votes + 1 }, id, updatePost)}
+            />
+            <p>{post?.votes}</p>
+            <img
+              src={`/down.svg`}
+              alt=""
+              className="icon"
+              onClick={handleUpdate(
+                { votes: post?.votes < 1 ? 0 : post?.votes - 1 },
+                id,
+                updatePost
+              )}
+            />
+          </div>
         </div>
       </main>
       <style jsx>{`
@@ -76,6 +96,10 @@ const Post = () => {
         .icon:active {
           transform: scale(1.1, 1.1);
           cursor: pointer;
+        }
+
+        .action p {
+          text-align: center;
         }
       `}</style>
     </Layout>
