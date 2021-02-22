@@ -2,7 +2,7 @@
 
 # RNX
 
-RNX is a blog app with per-post multi-reaction system.
+RNX is a sample blog app with per-post multi-reaction system.
 
 Built with [Next.js](https://nextjs.org/) and [FaunaDB](https://fauna.com/), and hosted on [Vercel](https://vercel.com/).
 
